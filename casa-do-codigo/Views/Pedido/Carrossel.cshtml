@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["title"] = "Carrossel";
+
 }
 <h3>Catálogo</h3>
 <div id="my-carousel" class="carousel slide" data-ride="carousel">
@@ -10,16 +11,17 @@
         <div class="item active">
 
             <div class="row">
-
+                @for (int i = 0; i < 4; i++)
+                {
                     <div class="col-md-3">
 
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <img src="~/images/produtos/large_1.jpg" />
+                                <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
                             </div>
                             <div class="panel-footer">
-                                <div>Camiseta Error 404</div>
-                                <div>R$59,90</div>
+                                <div>@(Model[i].Nome)</div>
+                                <div>R$ 59,90</div>
                                 <div class="text-center">
                                     <a asp-action="carrinho">Adicionar</a>
                                 </div>
@@ -27,56 +29,7 @@
                         </div>
 
                     </div>
-
-                    <div class="col-md-3">
-
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="~/images/produtos/large_2.jpg" />
-                            </div>
-                            <div class="panel-footer">
-                                <div>May the code be with you</div>
-                                <div>R$59,90</div>
-                                <div class="text-center">
-                                    <a asp-action="carrinho">Adicionar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-
-                        <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <img src="~/images/produtos/large_3.jpg" />
-                                </div>
-                                <div class="panel-footer">
-                                    <div>Como seria bom</div>
-                                    <div>R$59,90</div>
-                                    <div class="text-center">
-                                        <a asp-action="carrinho">Adicionar</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                    </div>
-
-                    <div class="col-md-3">
-
-                        <div class="panel panel-default">
-                                <div class="panel-body">
-
-                                    <img src="~/images/produtos/large_4.jpg" />
-                                </div>
-                                <div class="panel-footer">
-                                    <div>Como seria bom</div>
-                                    <div>R$59,90</div>
-                                    <div class="text-center">
-                                        <a asp-action="carrinho">Adicionar</a>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
+                }
             </div>
         </div>
 
