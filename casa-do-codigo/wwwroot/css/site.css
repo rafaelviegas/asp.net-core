@@ -49,3 +49,7 @@ textarea {
     background-color: #F8965D;
     border-color: #fff;
 }
+.carousel-control {
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
