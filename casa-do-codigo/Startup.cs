@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace casa_do_codigo
 {
@@ -27,6 +28,12 @@ namespace casa_do_codigo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = Configuration
+                .GetSection("ConnectionStrings")
+                .GetValue<string>("Default");
+
+
+            services.AddDbContext<Context>(options => options.UseSqlServer(connectionString));
             // Add framework services.
             services.AddMvc();
         }
