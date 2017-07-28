@@ -1,4 +1,5 @@
 ﻿using casa_do_codigo.Models;
+using casa_do_codigo.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -27,7 +28,14 @@ namespace casa_do_codigo.Controllers
             return View(produtos);
         }
 
+
+
         public IActionResult Carrinho()
+        {
+            return View(GetCarrinhoViewModel());
+        }
+
+        private CarrinhoViewModels GetCarrinhoViewModel()
         {
             var itensDeCarrinho = new List<ItemPedido> {
                  new ItemPedido(1, produtos[0],1),
@@ -35,12 +43,13 @@ namespace casa_do_codigo.Controllers
                   new ItemPedido(3, produtos[2],3)
                 };
 
-            return View(itensDeCarrinho);
+            return new CarrinhoViewModels(itensDeCarrinho);
         }
 
         public IActionResult Resumo()
         {
-            return View();
+
+            return View(GetCarrinhoViewModel());
         }
     }
 }

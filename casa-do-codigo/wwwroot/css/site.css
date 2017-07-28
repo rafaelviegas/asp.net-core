@@ -53,3 +53,7 @@ textarea {
     margin-bottom: 100px;
     margin-top: 100px;
 }
+.row-center {
+    display: flex;
+    align-items: center;
+}
