@@ -6,13 +6,23 @@ using System.Threading.Tasks;
 
 namespace casa_do_codigo
 {
-    public class DataServices
+    public class DataServices : IDataServices
     {
         private readonly Context _context;
 
         public DataServices(Context context)
         {
             _context = context;
+        }
+
+        public List<ItemPedido> GetItensPedido()
+        {
+            return _context.ItemPedido.ToList();
+        }
+
+        public List<Produto> GetProdutos()
+        {
+            return _context.Produtos.ToList();
         }
 
         public void InicializacaoDB()
@@ -23,15 +33,15 @@ namespace casa_do_codigo
             {
                 IList<Produto> produtos = new[]{
 
-                  new Produto (1,"Sleep not found", 59.90m),
-                  new Produto (2,  "May the code be with you", 59.90m),
-                  new Produto (3,  "Rollback", 59.90m),
-                  new Produto (4,  "REST", 69.90m),
-                  new Produto (5,  "Design Patterns com Java", 69.90m),
-                  new Produto (6,  "Vire o jogo com Spring Framework", 69.90m),
-                  new Produto (7,  "Test-Driven Development", 69.90m),
-                  new Produto (8,  "iOS: Programe para iPhone e iPad", 69.90m),
-                  new Produto (9,  "Desenvolvimento de Jogos para Android", 69.90m)
+                  new Produto ("Sleep not found", 59.90m),
+                  new Produto ("May the code be with you", 59.90m),
+                  new Produto ("Rollback", 59.90m),
+                  new Produto ("REST", 69.90m),
+                  new Produto ("Design Patterns com Java", 69.90m),
+                  new Produto ("Vire o jogo com Spring Framework", 69.90m),
+                  new Produto ("Test-Driven Development", 69.90m),
+                  new Produto ("iOS: Programe para iPhone e iPad", 69.90m),
+                  new Produto ("Desenvolvimento de Jogos para Android", 69.90m)
                 };
 
                 foreach (var produto in produtos)

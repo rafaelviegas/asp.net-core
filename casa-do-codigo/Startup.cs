@@ -34,12 +34,14 @@ namespace casa_do_codigo
 
 
             services.AddDbContext<Context>(options => options.UseSqlServer(connectionString));
+
             // Add framework services.
             services.AddMvc();
+            services.AddTransient<IDataServices, DataServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -62,6 +64,10 @@ namespace casa_do_codigo
                     name: "default",
                     template: "{controller=Pedido}/{action=Carrossel}/{id?}");
             });
+            IDataServices dataServices = serviceProvider
+                .GetService<IDataServices>();
+
+            dataServices.InicializacaoDB();
         }
     }
 }

@@ -19,6 +19,7 @@ namespace casa_do_codigo.Models
         this.Quantidade = quantidade;
         this.PrecoUnitario = produto.Preco;
     }
+        protected ItemPedido(){}
 
     }
 }
